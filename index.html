@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JOSEO — Grāmatvedības ārpakalpojumi</title>
+<meta name="description" content="SIA JOSEO — grāmatvedības ārpakalpojumi maziem un vidējiem uzņēmumiem Latvijā. Uzskaite, algu aprēķins, nodokļu pārskati, gada pārskati, konsultācijas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#141414;
+    --black-2:#1c1c1c;
+    --white:#ffffff;
+    --gold:#C9A227;
+    --gold-light:#e2c264;
+    --ink:#2a2a2a;
+    --ink-soft:#5c5c5c;
+    --hair:#e7e2d4;
+    --hair-dark:#333026;
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--white);
+    color:var(--ink);
+    font-family:'Lora', Georgia, serif;
+    font-size:17px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.mono{font-family:'Montserrat', Arial, sans-serif;}
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 32px;}
+  .eyebrow{
+    font-family:'Montserrat', Arial, sans-serif;
+    font-size:12.5px; font-weight:600; letter-spacing:4px;
+    color:var(--gold); text-transform:uppercase;
+  }
+  .rule{ height:1px; background:var(--gold); width:56px; margin:14px 0 0; }
+  .rule.center{ margin-left:auto; margin-right:auto; }
+
+  /* NAV */
+  header.nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    background:rgba(20,20,20,.92); backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--hair-dark);
+  }
+  .nav-inner{
+    max-width:var(--maxw); margin:0 auto; padding:16px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .nav-logo{
+    font-family:'Montserrat', Arial, sans-serif; font-weight:400;
+    color:var(--gold); letter-spacing:5px; font-size:19px; text-decoration:none;
+  }
+  .nav-links{ display:flex; gap:34px; list-style:none; margin:0; padding:0; }
+  .nav-links a{
+    font-family:'Montserrat', Arial, sans-serif; font-size:13px; font-weight:500;
+    letter-spacing:1.5px; text-transform:uppercase; color:#cfcfcf; text-decoration:none;
+    transition:color .2s ease;
+  }
+  .nav-links a:hover{ color:var(--gold); }
+  .nav-toggle{ display:none; background:none; border:0; cursor:pointer; padding:6px; }
+  .nav-toggle span{ display:block; width:22px; height:2px; background:var(--gold); margin:5px 0; }
+
+  /* HERO */
+  .hero{
+    background:var(--black); color:var(--white);
+    min-height:100svh;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center; padding:140px 32px 80px;
+    position:relative;
+  }
+  .hero-inner{ max-width:640px; }
+  .hero .word{
+    font-family:'Montserrat', Arial, sans-serif; font-weight:400;
+    font-size:clamp(48px, 9vw, 88px); letter-spacing:clamp(6px,1.4vw,12px);
+    color:var(--gold); margin:0; opacity:0; animation:rise .9s ease-out .1s forwards;
+  }
+  .hero-rule{
+    width:0; height:1.5px; background:var(--gold); margin:26px auto 18px;
+    animation:grow 1s ease-out .5s forwards;
+  }
+  .hero .tagline{
+    font-family:'Montserrat', Arial, sans-serif; font-weight:500; font-size:13px;
+    letter-spacing:4px; color:var(--gold); text-transform:uppercase;
+    opacity:0; animation:rise .8s ease-out .8s forwards;
+  }
+  .hero .lead{
+    font-family:'Lora', Georgia, serif; font-style:italic; font-weight:400;
+    font-size:clamp(19px,2.4vw,23px); color:#e9e6df; margin:34px 0 40px;
+    opacity:0; animation:rise .8s ease-out 1.1s forwards;
+  }
+  .btn{
+    display:inline-block; font-family:'Montserrat', Arial, sans-serif;
+    font-size:13px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase;
+    color:var(--gold); text-decoration:none; border:1px solid var(--gold);
+    padding:16px 34px; transition:background .25s ease, color .25s ease;
+    opacity:0; animation:rise .8s ease-out 1.4s forwards;
+  }
+  .btn:hover{ background:var(--gold); color:var(--black); }
+
+  @keyframes rise{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);} }
+  @keyframes grow{ from{width:0;} to{width:64px;} }
+
+  /* SECTIONS */
+  section{ padding:120px 0; }
+  .section-head{ margin-bottom:56px; }
+  .section-head h2{
+    font-weight:500; font-size:clamp(28px,3.4vw,38px); margin:14px 0 0; color:var(--ink);
+  }
+
+  /* SERVICES — ledger rows */
+  .ledger{ border-top:1px solid var(--hair); }
+  .ledger-row{
+    display:grid; grid-template-columns: 210px 1fr; gap:36px;
+    padding:30px 0; border-bottom:1px solid var(--hair);
+    align-items:baseline;
+  }
+  .ledger-row .num{
+    font-family:'Montserrat', Arial, sans-serif; font-size:12px; letter-spacing:2px;
+    color:var(--gold); font-weight:600;
+  }
+  .ledger-row h3{
+    font-weight:600; font-size:19px; margin:6px 0 0; color:var(--ink);
+  }
+  .ledger-row p{ margin:0; color:var(--ink-soft); font-size:16px; }
+
+  /* ABOUT */
+  .about{ background:var(--black); color:var(--white); }
+  .about .wrap{
+    display:grid; grid-template-columns: 1fr 1.5fr; gap:64px; align-items:start;
+  }
+  .about .eyebrow{ }
+  .about .name{
+    font-family:'Montserrat', Arial, sans-serif; font-weight:600; font-size:32px;
+    margin:14px 0 4px; color:var(--white);
+  }
+  .about .role{
+    font-family:'Montserrat', Arial, sans-serif; font-weight:400; font-size:14px;
+    color:#c9c9c9; letter-spacing:.5px;
+  }
+  .about .bio{ color:#d8d5cc; font-size:17.5px; }
+  .about .lic{
+    margin-top:26px; font-family:'Montserrat', Arial, sans-serif;
+    font-size:14px; font-weight:600; color:var(--gold); letter-spacing:1px;
+  }
+
+  /* CONTACT */
+  .contact .wrap{
+    display:grid; grid-template-columns: 1fr 1fr; gap:64px;
+  }
+  .contact-block h4{
+    font-family:'Montserrat', Arial, sans-serif; font-size:13px; font-weight:600;
+    letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin:0 0 18px;
+  }
+  .contact-links a{
+    display:block; font-family:'Montserrat', Arial, sans-serif; font-size:22px;
+    font-weight:500; color:var(--ink); text-decoration:none; margin-bottom:10px;
+    transition:color .2s ease;
+  }
+  .contact-links a:hover{ color:var(--gold); }
+  .req{ color:var(--ink-soft); font-size:15.5px; line-height:2; }
+  .req strong{ color:var(--ink); }
+
+  /* FOOTER */
+  footer{ background:var(--black); color:#9a9a9a; padding:44px 0; }
+  footer .wrap{
+    display:flex; flex-wrap:wrap; gap:16px; align-items:center; justify-content:space-between;
+  }
+  footer .word{
+    font-family:'Montserrat', Arial, sans-serif; font-weight:400; letter-spacing:4px;
+    color:var(--gold); font-size:16px;
+  }
+  footer .fine{ font-size:13px; }
+
+  @media (max-width:760px){
+    .nav-links{
+      position:absolute; top:100%; left:0; right:0; background:var(--black);
+      flex-direction:column; gap:0; border-top:1px solid var(--hair-dark);
+      max-height:0; overflow:hidden; transition:max-height .3s ease;
+    }
+    .nav-links.open{ max-height:320px; }
+    .nav-links a{ display:block; padding:16px 32px; border-bottom:1px solid var(--hair-dark); }
+    .nav-toggle{ display:block; }
+    .about .wrap, .contact .wrap{ grid-template-columns:1fr; }
+    .ledger-row{ grid-template-columns:1fr; gap:6px; }
+    section{ padding:80px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">JOSEO</a>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#pakalpojumi">Pakalpojumi</a></li>
+        <li><a href="#par-mums">Par mums</a></li>
+        <li><a href="#kontakti">Kontakti</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Izvēlne">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <h1 class="word">JOSEO</h1>
+    <div class="hero-rule"></div>
+    <div class="tagline">Grāmatvedības ārpakalpojumi</div>
+    <p class="lead">Skaidra uzskaite. Precīza bilance. Mierīgs prāts jūsu biznesam.</p>
+    <a class="btn" href="#kontakti">Pieteikties konsultācijai</a>
+  </div>
+</section>
+
+<section id="pakalpojumi">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Pakalpojumi</span>
+      <h2>Ko piedāvājam</h2>
+    </div>
+
+    <div class="ledger">
+      <div class="ledger-row">
+        <div><span class="num">01</span></div>
+        <div>
+          <h3>Grāmatvedības uzskaite</h3>
+          <p>Pilna grāmatvedības kārtošana atbilstoši Latvijas normatīvajiem aktiem — no primārajiem dokumentiem līdz regulārām atskaitēm.</p>
+        </div>
+      </div>
+      <div class="ledger-row">
+        <div><span class="num">02</span></div>
+        <div>
+          <h3>Algu aprēķins</h3>
+          <p>Darba algu aprēķini, nodokļu nomaksa un ar personālu saistītās dokumentācijas kārtošana.</p>
+        </div>
+      </div>
+      <div class="ledger-row">
+        <div><span class="num">03</span></div>
+        <div>
+          <h3>Nodokļu pārskati</h3>
+          <p>Regulāru deklarāciju sagatavošana un iesniegšana Valsts ieņēmumu dienestā noteiktajos termiņos.</p>
+        </div>
+      </div>
+      <div class="ledger-row">
+        <div><span class="num">04</span></div>
+        <div>
+          <h3>Gada pārskati</h3>
+          <p>Gada pārskatu un finanšu atskaišu sagatavošana, gatava iesniegšanai Uzņēmumu reģistrā.</p>
+        </div>
+      </div>
+      <div class="ledger-row">
+        <div><span class="num">05</span></div>
+        <div>
+          <h3>Konsultācijas</h3>
+          <p>Individuālas konsultācijas grāmatvedības, nodokļu un finanšu plānošanas jautājumos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="par-mums">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Par grāmatvedi</span>
+      <div class="rule"></div>
+    </div>
+    <div>
+      <div class="name">Ilze Švirkste</div>
+      <div class="role">Sertificēta grāmatvede · MBA Finance &amp; Accounting</div>
+      <p class="bio">
+        Ilze specializējas mazo un vidējo uzņēmumu grāmatvedības ārpakalpojumos, apvienojot
+        praktisku grāmatvedības pieredzi ar starptautisku finanšu izglītību. Pieeja balstīta
+        uz precizitāti, savlaicīgumu un skaidru komunikāciju ar klientu — lai uzņēmuma īpašniekam
+        vienmēr būtu skaidrs sava biznesa finanšu stāvoklis.
+      </p>
+      <div class="lic">Ārpakalpojuma grāmatveža licence Nr. AGL0003745</div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="kontakti">
+  <div class="wrap">
+    <div class="contact-block">
+      <h4>Sazinieties</h4>
+      <div class="contact-links">
+        <a href="tel:+37122016069">+371 22016069</a>
+        <a href="mailto:info@joseo.lv">info@joseo.lv</a>
+      </div>
+    </div>
+    <div class="contact-block">
+      <h4>Rekvizīti</h4>
+      <div class="req">
+        <strong>SIA JOSEO</strong><br>
+        PVN maksātāja Nr. LV40203735395<br>
+        Jur. adrese: Silikātu iela 1 k-3 - 36, Rīga, LV-1016<br>
+        Banka: Luminor, LV39RIKO0002930401898<br>
+        SWIFT: RIKOLV2X<br>
+        Licence Nr. AGL0003745
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="word">JOSEO</div>
+    <div class="fine">© <span id="year"></span> SIA JOSEO. Visas tiesības aizsargātas.</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+</script>
+
+</body>
+</html>
