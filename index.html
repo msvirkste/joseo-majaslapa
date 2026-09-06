@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  IESTATĪŠANAS INSTRUKCIJA — SIA JOSEO MĀJASLAPA
+  ============================================================
+
+  1) KONTAKTFORMAS PIESLĒGŠANA (Web3Forms) — JAU IESTATĪTS
+     - Piekļuves atslēga jau ievietota formā (access_key lauks).
+     - Ja nākotnē vajadzēs nomainīt uz citu Web3Forms kontu:
+       ej uz https://web3forms.com, dabū jaunu atslēgu, un šajā failā
+       atrodi rindu (meklē "access_key") un nomaini vērtību.
+     - Bezmaksas: 250 iesniegumi mēnesī.
+
+  2) WHATSAPP POGA
+     - Poga izmanto numuru +371 22564658 (wa.me saite).
+     - Ja numurs mainās, meklē "wa.me/" šajā failā un atjaunini.
+
+  3) PUBLICĒŠANA (GitHub Pages)
+     - Augšupielādē šo failu ("index.html") jaunā GitHub repozitorijā
+       kā "Upload files" (bez Git komandrindas nepieciešamības).
+     - Settings → Pages → Deploy from a branch → main → / (root)
+     - Settings → Pages → Custom domain → www.joseo.lv
+     - Domēna reģistratora panelī pievieno CNAME ierakstu:
+         www  →  tavslietotajvards.github.io
+     - Enforce HTTPS ieslēdz, tiklīdz DNS ir nostrādājis (var paiet līdz 24h)
+
+  4) SATURA ATJAUNINĀŠANA
+     - Rekvizīti, tālrunis un e-pasts atrodas sadaļā id="kontakti"
+     - Pakalpojumu apraksti — sadaļā id="pakalpojumi"
+     - BUJ jautājumi/atbildes — sadaļā id="buj"
+
+  5) APMEKLĒTĀJU STATISTIKA (Cloudflare Web Analytics) — JAU IESTATĪTS
+     - Token jau ievietots visos failos.
+     - Skaties datus: dash.cloudflare.com → Analytics & Logs → Web Analytics
+  ============================================================
+-->
+<html lang="lv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JOSEO — Grāmatvedības ārpakalpojumi</title>
+<meta name="description" content="SIA JOSEO — grāmatvedības ārpakalpojumi SIA uzņēmumiem un saimnieciskās darbības veicējiem Latvijā. Uzskaite, algu aprēķins, nodokļu pārskati, gada pārskati, konsultācijas.">
+<link rel="canonical" href="https://www.joseo.lv/">
+
+<!-- Open Graph (Facebook, LinkedIn u.c.) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="JOSEO">
+<meta property="og:locale" content="lv_LV">
+<meta property="og:url" content="https://www.joseo.lv/">
+<meta property="og:title" content="JOSEO — Grāmatvedības ārpakalpojumi">
+<meta property="og:description" content="Attālināta grāmatvedība visā Latvijā — uzskaite, algu aprēķins, nodokļu pārskati, gada pārskati, konsultācijas.">
+<meta property="og:image" content="https://www.joseo.lv/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="JOSEO — Grāmatvedības ārpakalpojumi">
+<meta name="twitter:description" content="Attālināta grāmatvedība visā Latvijā — uzskaite, algu aprēķins, nodokļu pārskati, gada pārskati, konsultācijas.">
+<meta name="twitter:image" content="https://www.joseo.lv/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#1B3A2C;
+    --black-2:#20422F;
+    --white:#F5F1E8;
+    --gold:#D6BF7F;
+    --gold-light:#E6D9AC;
+    --ink:#2a2a2a;
+    --ink-soft:#5c5c5c;
+    --hair:#e7e2d4;
+    --hair-dark:#345040;
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  section[id]{ scroll-margin-top:66px; }
+  body{
+    margin:0;
+    background:var(--white);
+    color:var(--ink);
+    font-family:'Lora', Georgia, serif;
+    font-size:17px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.mono{font-family:'Montserrat', Arial, sans-serif;}
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 32px;}
+  .eyebrow{
+    font-family:'Montserrat', Arial, sans-serif;
+    font-size:12.5px; font-weight:600; letter-spacing:4px;
+    color:var(--gold); text-transform:uppercase;
+  }
+  .rule{ height:1px; background:var(--gold); width:56px; margin:14px 0 0; }
+  .rule.center{ margin-left:auto; margin-right:auto; }
+
+  /* NAV */
+  header.nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    background:rgba(20,20,20,.92); backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--hair-dark);
+  }
+  .nav-inner{
+    max-width:var(--maxw); margin:0 auto; padding:16px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .nav-logo{
+    font-family:'Montserrat', Arial, sans-serif; font-weight:400;
+    color:var(--gold); letter-spacing:5px; font-size:19px; text-decoration:none;
+  }
+  .nav-links{ display:flex; gap:34px; list-style:none; margin:0; padding:0; }
+  .nav-links > li{ position:relative; }
+  .nav-links a{
+    font-family:'Montserrat', Arial, sans-serif; font-size:13px; font-weight:500;
+    letter-spacing:1.5px; text-transform:uppercase; color:#cfcfcf; text-decoration:none;
+    transition:color .2s ease;
+    display:flex; align-items:center; gap:5px;
+  }
+  .nav-links a:hover{ color:var(--gold); }
+  .nav-caret{
+    width:7px; height:7px; border-right:1.5px solid currentColor; border-bottom:1.5px solid currentColor;
+    transform:rotate(45deg); margin-top:-3px; opacity:.8; transition:transform .2s ease;
+  }
+  .has-dropdown:hover .nav-caret{ transform:rotate(225deg); margin-top:3px; }
+
+  .dropdown{
+    list-style:none; margin:0; padding:10px 0; position:absolute; top:100%; left:50%;
+    transform:translateX(-50%); min-width:200px; background:var(--black);
+    border:1px solid var(--hair-dark); border-top:2px solid var(--gold);
+    opacity:0; visibility:hidden; transform:translateX(-50%) translateY(6px);
+    transition:opacity .18s ease, transform .18s ease; z-index:60;
+  }
+  .has-dropdown:hover .dropdown,
+  .has-dropdown:focus-within .dropdown{
+    opacity:1; visibility:visible; transform:translateX(-50%) translateY(0);
+  }
+  .dropdown li{ list-style:none; }
+  .dropdown a{
+    display:block; padding:10px 20px; font-size:12px; letter-spacing:1px;
+    color:#cfcfcf; white-space:nowrap; text-transform:none; font-weight:400;
+  }
+  .dropdown a:hover{ color:var(--gold); background:var(--black-2); }
+
+  .nav-toggle{ display:none; background:none; border:0; cursor:pointer; padding:6px; }
+  .nav-toggle span{ display:block; width:22px; height:2px; background:var(--gold); margin:5px 0; }
+
+  /* HERO */
+  .hero{
+    background:var(--black); color:var(--white);
+    min-height:100svh;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center; padding:140px 32px 80px;
+    position:relative;
+  }
+  .hero-inner{ max-width:640px; }
+  .hero .word{
+    font-family:'Montserrat', Arial, sans-serif; font-weight:400;
+    font-size:clamp(48px, 9vw, 88px); letter-spacing:clamp(6px,1.4vw,12px);
+    color:var(--gold); margin:0; opacity:0; animation:rise .9s ease-out .1s forwards;
+  }
+  .hero-rule{
+    width:0; height:1.5px; background:var(--gold); margin:26px auto 18px;
+    animation:grow 1s ease-out .5s forwards;
+  }
+  .hero .tagline{
+    font-family:'Montserrat', Arial, sans-serif; font-weight:500; font-size:13px;
+    letter-spacing:4px; color:var(--gold); text-transform:uppercase;
+    opacity:0; animation:rise .8s ease-out .8s forwards;
+  }
+  .hero .lead{
+    font-family:'Lora', Georgia, serif; font-style:italic; font-weight:400;
+    font-size:clamp(19px,2.4vw,23px); color:#e9e6df; margin:34px 0 40px;
+    opacity:0; animation:rise .8s ease-out 1.1s forwards;
+  }
+  .btn{
+    display:inline-block; font-family:'Montserrat', Arial, sans-serif;
+    font-size:13px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase;
+    color:var(--gold); text-decoration:none; border:1px solid var(--gold);
+    padding:16px 34px; transition:background .25s ease, color .25s ease;
+  }
+  .btn:hover{ background:var(--gold); color:var(--black); }
+  .hero .btn{ opacity:0; animation:rise .8s ease-out 1.4s forwards; }
+
+  @keyframes rise{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);} }
+  @keyframes grow{ from{width:0;} to{width:64px;} }
+
+  /* PROCESS STRIP */
+  .process{ background:var(--black-2); border-top:1px solid var(--hair-dark); border-bottom:1px solid var(--hair-dark); }
+  .process .wrap{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:0;
+  }
+  .process-item{
+    padding:52px 40px; border-left:1px solid var(--hair-dark);
+  }
+  .process-item:first-child{ border-left:none; padding-left:0; }
+  .process-item .num{
+    font-family:'Montserrat', Arial, sans-serif; font-size:12px; letter-spacing:2px;
+    color:var(--gold); font-weight:600;
+  }
+  .process-item h3{
+    color:var(--white); font-size:18px; font-weight:600; margin:10px 0 8px;
+  }
+  .process-item p{ color:#b8b5ab; font-size:15px; margin:0; line-height:1.65; }
+
+  /* SECTIONS */
+  section{
+    padding:90px 0; min-height:calc(100vh - 66px); box-sizing:border-box;
+    display:flex; flex-direction:column; justify-content:flex-start;
+  }
+  #kontakti{ justify-content:center; }
+  .section-head{ margin-bottom:36px; }
+  #cenas{ padding:45px 0 55px; }
+  #cenas .section-head{ margin-bottom:16px; }
+  #cenas .section-head p{ margin-top:6px !important; }
+  #pakalpojumi{ padding:55px 0 65px; }
+  #pakalpojumi .section-head{ margin-bottom:18px; }
+  #pakalpojumi .section-head p{ margin-top:6px !important; }
+  #buj{ padding:55px 0 65px; }
+  #buj .section-head{ margin-bottom:18px; }
+  .section-head h2{
+    font-weight:500; font-size:clamp(26px,3.2vw,34px); margin:12px 0 0; color:var(--ink);
+  }
+
+  /* SERVICES — ledger rows */
+  .ledger{ border-top:1px solid var(--hair); }
+  .ledger-row{
+    display:grid; grid-template-columns: 200px 1fr; gap:30px;
+    padding:10px 0; border-bottom:1px solid var(--hair);
+    align-items:center;
+  }
+  .num-bubble{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:42px; height:42px; border-radius:50%;
+    border:1.5px solid var(--gold); color:var(--gold);
+    font-family:'Montserrat', Arial, sans-serif; font-size:13px; font-weight:600; letter-spacing:.5px;
+    background:transparent;
+    transform:scale(0); opacity:0;
+    transition:transform .5s cubic-bezier(.34,1.56,.64,1), background .25s ease, color .25s ease, opacity .4s ease;
+  }
+  .num-bubble.in-view{ transform:scale(1); opacity:1; }
+  .ledger-row:hover .num-bubble{ transform:scale(1.18) translateY(-3px); background:var(--gold); color:var(--black); }
+  .ledger-row h3{
+    font-weight:600; font-size:17px; margin:4px 0 0; color:var(--ink);
+  }
+  .ledger-row p{ margin:0; color:var(--ink-soft); font-size:14.5px; line-height:1.5; }
+
+  /* ABOUT */
+  .about{ background:var(--black); color:var(--white); }
+  .about .wrap{
+    display:grid; grid-template-columns: 1fr 1.5fr; gap:64px; align-items:start;
+  }
+  .about .eyebrow{ }
+  .about .name{
+    font-family:'Montserrat', Arial, sans-serif; font-weight:600; font-size:32px;
+    margin:14px 0 4px; color:var(--white);
+  }
+  .about .role{
+    font-family:'Montserrat', Arial, sans-serif; font-weight:400; font-size:14px;
+    color:#c9c9c9; letter-spacing:.5px;
+  }
+  .about .bio{ color:#d8d5cc; font-size:17.5px; }
+  .about .lic{
+    margin-top:26px; font-family:'Montserrat', Arial, sans-serif;
+    font-size:14px; font-weight:600; color:var(--gold); letter-spacing:1px;
+  }
+
+  /* PRICING */
+  .price-card{
+    border:1px solid var(--hair); border-top:3px solid var(--gold);
+    padding:22px 28px; background:#FEFDFB; margin-top:6px;
+  }
+  .price-hero{ text-align:center; padding:8px 20px 4px; }
+  .price-hero .label{
+    font-family:'Montserrat', Arial, sans-serif; font-size:12px; font-weight:600;
+    letter-spacing:3px; text-transform:uppercase; color:var(--gold);
+  }
+  .price-hero .amount{
+    font-family:'Montserrat', Arial, sans-serif; font-weight:700; font-size:40px;
+    color:var(--ink); margin-top:2px;
+  }
+  .price-hero .amount span{ font-size:15px; font-weight:500; color:var(--ink-soft); }
+  .price-hero .desc{
+    max-width:480px; margin:8px auto 0; color:var(--ink-soft); font-size:14px; line-height:1.45;
+  }
+  .price-cta{ text-align:center; margin-top:16px; }
+  .price-cta .btn{ padding:11px 26px; font-size:12px; }
+  .price-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:1px;
+    background:var(--hair); border:1px solid var(--hair);
+  }
+  .price-cell{
+    background:#FEFDFB; padding:20px 18px; text-align:left;
+  }
+  .price-cell .range{
+    font-family:'Montserrat', Arial, sans-serif; font-size:11.5px; font-weight:600;
+    letter-spacing:1px; text-transform:uppercase; color:var(--ink-soft); margin-bottom:8px;
+  }
+  .price-cell .amount{
+    font-family:'Montserrat', Arial, sans-serif; font-weight:700; font-size:23px; color:var(--ink);
+  }
+  .price-cell .amount span{ font-size:13px; font-weight:500; color:var(--ink-soft); }
+  .price-cell.custom{ background:#F7F3E8; }
+  .price-cell.custom .range{ color:var(--gold); }
+  .price-cell.custom .amount{ color:var(--gold); font-size:18px; font-style:italic; }
+
+  .price-chips{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:8px 10px; margin-top:14px;
+  }
+  .price-chips .chip{
+    display:inline-flex; align-items:center; gap:6px;
+    font-family:'Montserrat', Arial, sans-serif; font-size:12px; font-weight:500;
+    color:var(--ink); background:#F7F3E8; border:1px solid var(--hair);
+    padding:6px 13px; border-radius:18px;
+  }
+  .price-chips .chip b{ color:var(--gold); font-weight:700; }
+
+  .price-notes{
+    margin-top:14px; font-size:11.5px; color:var(--ink-soft); line-height:1.5;
+  }
+  .price-notes p{ margin:0 0 3px; }
+
+  @media (max-width:700px){
+    .price-grid{ grid-template-columns:repeat(2, 1fr); }
+  }
+  @media (max-width:440px){
+    .price-grid{ grid-template-columns:1fr; }
+  }
+
+  /* FAQ */
+  .faq-item{ border-bottom:1px solid var(--hair); padding:10px 0; }
+  .faq-item h3{
+    font-weight:600; font-size:16px; margin:0 0 5px; color:var(--ink);
+  }
+  .faq-item p{ margin:0; color:var(--ink-soft); font-size:14.5px; line-height:1.5; }
+
+  /* CONTACT */
+  #kontakti{ padding:55px 0 60px; }
+  .contact-grid{
+    display:grid; grid-template-columns: 1fr 1fr; gap:64px; align-items:start;
+  }
+  .contact-left .contact-block + .contact-block{ margin-top:32px; }
+  .whatsapp-btn{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:'Montserrat', Arial, sans-serif; font-size:13px; font-weight:600;
+    letter-spacing:1.5px; text-transform:uppercase; color:var(--black);
+    background:var(--gold); text-decoration:none; padding:12px 22px;
+    margin-top:4px; transition:background .2s ease;
+  }
+  .whatsapp-btn:hover{ background:var(--gold-light); }
+  .contact-form{
+    background:var(--black); border:1px solid var(--black);
+    border-top:3px solid var(--gold); padding:26px 30px; border-radius:2px;
+  }
+  .contact-form h4{
+    font-family:'Montserrat', Arial, sans-serif; font-size:13px; font-weight:600;
+    letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin:0 0 16px;
+  }
+  .form-grid{
+    display:grid; grid-template-columns:1fr; gap:0;
+  }
+  .form-grid .span2{ grid-column:1 / -1; }
+  .contact-form label{
+    display:block; font-family:'Montserrat', Arial, sans-serif; font-size:11.5px;
+    font-weight:500; letter-spacing:1px; text-transform:uppercase; color:#a9bdb0;
+    margin-bottom:5px;
+  }
+  .form-row{ margin-bottom:10px; }
+  .contact-form input,
+  .contact-form textarea{
+    width:100%; border:none; border-bottom:1px solid #3a5443;
+    background:transparent; font-family:'Lora', Georgia, serif; font-size:15px;
+    color:var(--white); padding:5px 2px; outline:none; transition:border-color .2s ease;
+    resize:vertical;
+  }
+  .contact-form textarea{ min-height:38px; }
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder{ color:#6f8a78; }
+  .contact-form input:focus,
+  .contact-form textarea:focus{ border-bottom-color:var(--gold); }
+  .form-submit{
+    font-family:'Montserrat', Arial, sans-serif; font-size:12.5px; font-weight:600;
+    letter-spacing:2.5px; text-transform:uppercase; color:var(--gold);
+    background:transparent; border:1px solid var(--gold); cursor:pointer;
+    padding:10px 26px; transition:background .25s ease, color .25s ease;
+  }
+  .form-submit:hover{ background:var(--gold); color:var(--black); }
+  .form-note{ font-size:11.5px; color:#8fa898; margin-top:8px; }
+  .form-success{ display:none; color:var(--gold); font-family:'Montserrat', Arial, sans-serif; font-weight:600; font-size:13px; margin-top:10px; }
+
+  .consent-row{
+    display:flex; align-items:flex-start; gap:10px; margin:10px 0 14px;
+  }
+  .consent-row input[type="checkbox"]{
+    width:17px; height:17px; margin-top:2px; flex-shrink:0; accent-color:var(--gold);
+    cursor:pointer;
+  }
+  .consent-row label{
+    font-family:'Lora', Georgia, serif; font-size:13.5px; color:#a9bdb0;
+    line-height:1.45; text-transform:none; letter-spacing:normal; font-weight:400;
+    margin:0; cursor:pointer;
+  }
+  .consent-row a{ color:var(--white); font-weight:600; text-decoration:underline; }
+  .consent-row a:hover{ color:var(--gold); }
+  .contact-block h4{
+    font-family:'Montserrat', Arial, sans-serif; font-size:13px; font-weight:600;
+    letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin:0 0 18px;
+  }
+  .contact-links a{
+    display:block; font-family:'Montserrat', Arial, sans-serif; font-size:20px;
+    font-weight:500; color:var(--ink); text-decoration:none; margin-bottom:8px;
+    transition:color .2s ease;
+  }
+  .contact-links a:hover{ color:var(--gold); }
+  .req{ color:var(--ink-soft); font-size:14.5px; line-height:1.85; }
+  .req strong{ color:var(--ink); }
+
+  /* FOOTER */
+  footer{ background:var(--black); color:#9a9a9a; padding:56px 0 28px; }
+  footer .wrap{}
+  .footer-top{
+    display:flex; flex-wrap:wrap; justify-content:space-between; gap:40px;
+    padding-bottom:36px; border-bottom:1px solid var(--hair-dark); margin-bottom:24px;
+  }
+  .footer-brand .word{
+    font-family:'Montserrat', Arial, sans-serif; font-weight:400; letter-spacing:4px;
+    color:var(--gold); font-size:19px;
+  }
+  .footer-brand .footer-tag{
+    font-family:'Montserrat', Arial, sans-serif; font-size:11.5px; font-weight:500;
+    letter-spacing:1.5px; text-transform:uppercase; color:#8a9a90; margin-top:10px;
+  }
+  .footer-contact h4{
+    font-family:'Montserrat', Arial, sans-serif; font-size:12.5px; font-weight:600;
+    letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin:0 0 14px;
+  }
+  .footer-contact p{
+    margin:0 0 8px; font-family:'Montserrat', Arial, sans-serif; font-size:14px; color:#c3d3c8;
+  }
+  .footer-contact a{ color:#c3d3c8; text-decoration:none; transition:color .2s ease; }
+  .footer-contact a:hover{ color:var(--gold); }
+  .footer-bottom{
+    display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between;
+  }
+  footer .word{
+    font-family:'Montserrat', Arial, sans-serif; font-weight:400; letter-spacing:4px;
+    color:var(--gold); font-size:16px;
+  }
+  footer .fine{ font-size:13px; }
+
+  @media (max-width:760px){
+    .nav-links{
+      position:absolute; top:100%; left:0; right:0; background:var(--black);
+      flex-direction:column; gap:0; border-top:1px solid var(--hair-dark);
+      max-height:0; overflow:hidden; transition:max-height .3s ease;
+    }
+    .nav-links.open{ max-height:760px; }
+    .nav-links a{ display:flex; padding:16px 32px; border-bottom:1px solid var(--hair-dark); }
+    .nav-caret{ display:none; }
+    .dropdown{
+      position:static; opacity:1; visibility:visible; transform:none;
+      border:none; background:var(--black-2); padding:0; min-width:0;
+    }
+    .dropdown a{ padding:12px 32px 12px 48px; font-size:11px; border-bottom:1px solid var(--hair-dark); }
+    .nav-toggle{ display:block; }
+    .about .wrap{ grid-template-columns:1fr; }
+    .contact-grid{ grid-template-columns:1fr; gap:36px; }
+    .form-grid{ grid-template-columns:1fr; }
+    .ledger-row{ grid-template-columns:1fr; gap:6px; }
+    .process .wrap{ grid-template-columns:1fr; }
+    .process-item{ border-left:none !important; border-top:1px solid var(--hair-dark); padding:36px 0 !important; }
+    .process-item:first-child{ border-top:none; }
+    section{ padding:80px 0; min-height:auto; display:block; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">JOSEO</a>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#process">Sadarbība</a></li>
+        <li><a href="#pakalpojumi">Pakalpojumi</a></li>
+        <li><a href="#cenas">Cenas</a></li>
+        <li><a href="#par-mums">Par mums</a></li>
+        <li><a href="#buj">BUJ</a></li>
+        <li><a href="#kontakti">Kontakti</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Izvēlne">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <h1 class="word">JOSEO</h1>
+    <div class="hero-rule"></div>
+    <div class="tagline">Grāmatvedības ārpakalpojumi</div>
+    <p class="lead">Attālināta grāmatvedība visā Latvijā — skaidra uzskaite, precīza bilance, mierīgs prāts jūsu biznesam.</p>
+    <a class="btn" href="#kontakti">Pieteikties konsultācijai</a>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="process-item">
+      <span class="num">01</span>
+      <h3>Dokumentu nodošana</h3>
+      <p>Vienkāršota dokumentu aprite: rēķinus, pavadzīmes, čekus varat pārsūtīt uz e-pastu, nofotografēt telefona aplikācijā vai WhatsApp, vai nosūtīt ar Omniva pakomātu no jebkuras vietas Latvijā.</p>
+    </div>
+    <div class="process-item">
+      <span class="num">02</span>
+      <h3>Attālināta sadarbība</h3>
+      <p>Sazināmies telefoniski, WhatsApp, video zvanos vai e-pastā. Klātienes tikšanās iespējama.</p>
+    </div>
+    <div class="process-item">
+      <span class="num">03</span>
+      <h3>Finanšu rādītāji</h3>
+      <p>Grāmatvedis ar pievienoto vērtību — izvērtēšu pēc nepieciešamības Jūsu svarīgākos uzņēmuma KPI's.</p>
+    </div>
+  </div>
+</section>
+
+<section id="pakalpojumi">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Pakalpojumi</span>
+      <h2>Ko piedāvājam</h2>
+      <p style="max-width:520px; margin-top:18px; color:var(--ink-soft);">Visi pakalpojumi pieejami pilnībā attālināti — sadarbojos ar klientiem visā Latvijā, bez piesaistes konkrētam birojam vai pilsētai.</p>
+    </div>
+
+    <div class="ledger">
+      <div class="ledger-row">
+        <div><span class="num-bubble">01</span></div>
+        <div>
+          <h3>Grāmatvedības uzskaite</h3>
+          <p>Pilna cikla grāmatvedības uzskaites kārtošana atbilstoši Latvijas normatīvajiem aktiem — attālināti, neatkarīgi no jūsu atrašanās vietas.</p>
+        </div>
+      </div>
+      <div class="ledger-row">
+        <div><span class="num-bubble">02</span></div>
+        <div>
+          <h3>Algu aprēķins</h3>
+          <p>Darba algu un nodokļu aprēķini, ar personālu saistītās dokumentācijas kārtošana un atskaišu par darba samaksu iesniegšana VID.</p>
+        </div>
+      </div>
+      <div class="ledger-row">
+        <div><span class="num-bubble">03</span></div>
+        <div>
+          <h3>Nodokļu pārskati</h3>
+          <p>PVN deklarācijas un citu regulāru deklarāciju sagatavošana un iesniegšana Valsts ieņēmumu dienestā noteiktajos termiņos.</p>
+        </div>
+      </div>
+      <div class="ledger-row">
+        <div><span class="num-bubble">04</span></div>
+        <div>
+          <h3>Gada pārskati</h3>
+          <p>Gada pārskatu sagatavošana un iesniegšana.</p>
+        </div>
+      </div>
+      <div class="ledger-row">
+        <div><span class="num-bubble">05</span></div>
+        <div>
+          <h3>Konsultācijas</h3>
+          <p>Individuālas konsultācijas grāmatvedības, nodokļu un finanšu plānošanas un kontroles jautājumos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cenas">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Cenas</span>
+      <h2>Cik maksā pakalpojumi?</h2>
+      <p style="max-width:520px; margin-top:18px; color:var(--ink-soft);">Cena ir atkarīga no operāciju skaita, darbinieku skaita un izvēlētajiem papildu pakalpojumiem — precīzu piedāvājumu sagatavoju individuāli.</p>
+    </div>
+
+    <div class="price-card">
+      <div class="price-hero">
+        <div class="label">Sākot no</div>
+        <div class="amount">49 € <span>/ mēnesī</span></div>
+        <p class="desc">Mazākiem klientiem (līdz 20 operācijām, 1 darbinieks) — viss iekļauts vienā fiksētā cenā.</p>
+      </div>
+
+      <div class="price-chips">
+        <span class="chip">✓ <b>PVN deklarācija</b> iekļauta</span>
+        <span class="chip">✓ <b>Civiltiesiskās atbildības apdrošināšana</b> iekļauta</span>
+        <span class="chip">✓ <b>Konsultācijas</b> iekļautas</span>
+        <span class="chip">✓ Grāmatvedības <b>programma un EDS</b> administrēšana iekļauta</span>
+      </div>
+
+      <div class="price-cta">
+        <a class="btn" id="ctaPriceRequest" href="#kontakti" style="color:var(--ink); border-color:var(--ink);">Pieprasīt personalizētu cenas piedāvājumu</a>
+      </div>
+
+      <div class="price-notes">
+        <p>* Visas norādītās cenas ir bez pievienotās vērtības nodokļa (PVN).</p>
+        <p>** Pakalpojumi paredzēti SIA formas uzņēmumiem.</p>
+        <p>*** Precīza cena atkarīga no ikmēneša operāciju skaita (dokumentu un bankas transakciju apstrāde), darbinieku skaita un izvēlētajiem papildu pakalpojumiem (piem., gada pārskats, operatīvie/vadības pārskati). Pilnu cenrādi nosūtu pēc pieprasījuma.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="par-mums">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Par mums</span>
+      <div class="rule"></div>
+    </div>
+    <div>
+      <div class="name">Malda Švirkste</div>
+      <div class="role">Valdes locekle · Sertificēta grāmatvede · MBA Finance &amp; Accounting</div>
+      <p class="bio">
+        Malda specializējas SIA uzņēmumu un saimnieciskās darbības veicēju grāmatvedības ārpakalpojumos, apvienojot
+        praktisku grāmatvedības pieredzi ar starptautisku finanšu izglītību. Vairāk nekā 10 gadu pieredze
+        finanšu un grāmatvedības procesu kontrolē dos Jums kā klientam iespēju ne tikai veikt vienkāršu
+        grāmatvedību, bet arī uzlabot savus finanšu kontroles procesus uzņēmumā. Pieeja balstīta
+        uz precizitāti, savlaicīgumu un skaidru komunikāciju ar klientu.
+      </p>
+      <div class="lic">Ārpakalpojuma grāmatveža licence Nr. AGL0003745</div>
+    </div>
+  </div>
+</section>
+
+<section id="buj">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">BUJ</span>
+      <h2>Biežāk uzdotie jautājumi</h2>
+    </div>
+
+    <div>
+      <div class="faq-item">
+        <h3>Cik maksā grāmatvedības pakalpojumi?</h3>
+        <p>Izmaksas nosaka individuāli, atkarībā no uzņēmuma lieluma, dokumentu apjoma un nepieciešamo pakalpojumu klāsta. Pirmā konsultācija ir bez maksas — tās laikā izvērtēju darba apjomu un sagatavoju konkrētu cenas piedāvājumu.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Vai jāapmeklē birojs klātienē?</h3>
+        <p>Nē — sadarbība notiek pilnībā attālināti. Strādāju ar klientiem visā Latvijā neatkarīgi no atrašanās vietas; klātienes tikšanās ir iespējamas, ja tās kādam ir vēlamas, bet nav obligātas.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Vai varat pārņemt grāmatvedību no cita grāmatveža vai uzņēmuma?</h3>
+        <p>Jā, regulāri pārņemu grāmatvedību no citiem pakalpojumu sniedzējiem. Process sākas ar esošās dokumentācijas izvērtēšanu, lai pāreja notiktu droši un bez pārtraukumiem uzņēmuma ikdienas darbībā.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Kā notiek dokumentu un informācijas apmaiņa?</h3>
+        <p>Pilnībā digitāli — dokumentus var iesniegt pa e-pastu vai izmantojot ērtu mākoņpakalpojumu, atkarībā no tā, kas klientam ērtāk. Saziņa notiek telefoniski, e-pastā vai video zvanos.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Kādiem uzņēmumiem ir piemēroti jūsu pakalpojumi?</h3>
+        <p>Specializējos SIA uzņēmumu un saimnieciskās darbības veicēju grāmatvedībā — maziem un vidējiem uzņēmumiem, kuriem nepieciešama uzticama, personalizēta uzskaite bez liela pakalpojumu sniedzēja birokrātijas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="kontakti">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-left">
+        <div class="contact-block">
+          <h4>Sazinieties</h4>
+          <div class="contact-links">
+            <a href="tel:+37122564658">+371 22564658</a>
+            <a href="mailto:info@joseo.lv">info@joseo.lv</a>
+          </div>
+          <a class="whatsapp-btn" href="https://wa.me/37122564658?text=Sveiki%2C%20interes%C4%93%20J%C5%ABsu%20gr%C4%81matved%C4%ABbas%20pakalpojumi." target="_blank" rel="noopener">
+            WhatsApp — rakstiet uzreiz
+          </a>
+        </div>
+        <div class="contact-block">
+          <h4>Rekvizīti</h4>
+          <div class="req">
+            <strong>SIA JOSEO</strong><br>
+            PVN maksātāja Nr. LV40203735395<br>
+            Jur. adrese: Silikātu iela 1 k-3 - 36, Rīga, LV-1016<br>
+            Banka: Luminor, LV39RIKO0002930401898<br>
+            SWIFT: RIKOLV2X<br>
+            Licence Nr. AGL0003745
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h4 id="formHeading">Vai aizpildiet pieprasījuma formu</h4>
+        <form id="joseoForm" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="8cbc0cb9-08c8-47a6-96b7-8a73b10a29c2">
+          <input type="hidden" name="subject" value="Jauns pieprasījums no JOSEO mājaslapas">
+          <input type="hidden" name="from_name" value="JOSEO mājaslapa">
+          <div class="form-grid">
+            <div class="form-row">
+              <label for="f-name">Vārds, uzvārds</label>
+              <input type="text" id="f-name" name="name" required>
+            </div>
+            <div class="form-row">
+              <label for="f-email">E-pasts</label>
+              <input type="email" id="f-email" name="email" required>
+            </div>
+            <div class="form-row">
+              <label for="f-phone">Tālrunis (nav obligāts)</label>
+              <input type="tel" id="f-phone" name="phone">
+            </div>
+            <div class="form-row span2">
+              <label for="f-message">Ziņa</label>
+              <textarea id="f-message" name="message" rows="2" required></textarea>
+            </div>
+          </div>
+          <div class="consent-row">
+            <input type="checkbox" id="f-consent" name="consent" required>
+            <label for="f-consent">Nospiežot pogu "Nosūtīt", Jūs piekrītat <a href="privatuma-politika.html" target="_blank" rel="noopener">privātuma politikai</a> un <a href="noteikumi.html" target="_blank" rel="noopener">lietošanas noteikumiem</a>.</label>
+          </div>
+          <button class="form-submit" type="submit">Nosūtīt pieprasījumu</button>
+          <p class="form-note">Nospiežot "Nosūtīt", ziņa tiks pārsūtīta uz info@joseo.lv.</p>
+        </form>
+        <div class="form-success" id="formSuccess">Paldies! Jūsu ziņa ir saņemta, atbildēsim Jums tuvāko 1-2 darba dienu laikā.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="word">JOSEO</div>
+        <div class="footer-tag">Grāmatvedības ārpakalpojumi</div>
+      </div>
+      <div class="footer-contact">
+        <h4>Kontakti</h4>
+        <p>Silikātu iela 1 k-3 - 36, Rīga, LV-1016</p>
+        <p><a href="tel:+37122564658">+371 22564658</a></p>
+        <p><a href="mailto:info@joseo.lv">info@joseo.lv</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="fine">© <span id="year"></span> SIA JOSEO. Visas tiesības aizsargātas.</div>
+      <div class="fine"><a href="privatuma-politika.html" style="color:#9a9a9a;">Privātuma politika</a> &nbsp;·&nbsp; <a href="noteikumi.html" style="color:#9a9a9a;">Lietošanas noteikumi</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const ctaPriceRequest = document.getElementById('ctaPriceRequest');
+  if(ctaPriceRequest){
+    ctaPriceRequest.addEventListener('click', function(){
+      const messageField = document.getElementById('f-message');
+      if(messageField && !messageField.value.trim()){
+        messageField.value = 'Vēlos saņemt personalizētu cenas piedāvājumu manam uzņēmumam.';
+      }
+    });
+  }
+
+  const bubbles = document.querySelectorAll('#pakalpojumi .num-bubble');
+  const bubbleObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        bubbles.forEach((b, i) => {
+          setTimeout(() => b.classList.add('in-view'), i * 90);
+        });
+        bubbleObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  const ledgerEl = document.querySelector('#pakalpojumi .ledger');
+  if(ledgerEl) bubbleObserver.observe(ledgerEl);
+
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+  const joseoForm = document.getElementById('joseoForm');
+  if(joseoForm){
+    joseoForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      const data = new FormData(joseoForm);
+      const submitBtn = joseoForm.querySelector('.form-submit');
+      submitBtn.textContent = 'Sūta...';
+      submitBtn.disabled = true;
+      fetch(joseoForm.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      }).then(res => res.json().then(json => ({ ok: res.ok, json }))).then(({ ok, json }) => {
+        if(ok && json.success){
+          joseoForm.reset();
+          joseoForm.style.display = 'none';
+          document.getElementById('formHeading').style.display = 'none';
+          document.getElementById('formSuccess').style.display = 'block';
+        } else {
+          submitBtn.textContent = 'Nosūtīt pieprasījumu';
+          submitBtn.disabled = false;
+          alert('Neizdevās nosūtīt. Lūdzu, sazinieties tieši pa e-pastu vai tālruni.');
+        }
+      }).catch(() => {
+        submitBtn.textContent = 'Nosūtīt pieprasījumu';
+        submitBtn.disabled = false;
+        alert('Neizdevās nosūtīt. Lūdzu, sazinieties tieši pa e-pastu vai tālruni.');
+      });
+    });
+  }
+</script>
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "1ca93191a14841fba4f4599f008b586c"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
