@@ -648,51 +648,12 @@
     </div>
 
     <div class="price-card">
-      <p class="price-intro-note">The exact scope of service is tailored individually for each client. As a guideline, we offer the following collaboration packages:</p>
-
-      <div class="price-cards">
-        <div class="price-tier">
-          <div class="pt-label">Mini</div>
-          <div class="pt-price">€59 <span>/ month</span></div>
-          <ul class="pt-features">
-            <li>Up to <b>10</b> bank transactions/month</li>
-            <li class="pt-or">or</li>
-            <li>Up to <b>20</b> transactions/month</li>
-            <li>Employing <b>1</b> employee</li>
-            <li>Liaising and communicating with <b>VID</b></li>
-            <li><b>Up to 3</b> monthly VID reports</li>
-          </ul>
-          <a class="pt-cta cta-tier" href="#kontakti" data-tier="Mini">Get started</a>
-        </div>
-
-        <div class="price-tier">
-          <div class="pt-label">Start</div>
-          <div class="pt-price">€99 <span>/ month</span></div>
-          <ul class="pt-features">
-            <li>Up to <b>30</b> bank transactions/month</li>
-            <li class="pt-or">or</li>
-            <li>Up to <b>40</b> transactions/month</li>
-            <li>Employing up to <b>3</b> employees</li>
-            <li>Liaising and communicating with <b>VID</b></li>
-            <li><b>Up to 3</b> monthly VID reports</li>
-          </ul>
-          <a class="pt-cta cta-tier" href="#kontakti" data-tier="Start">Get started</a>
-        </div>
-
-        <div class="price-tier">
-          <div class="pt-label">Grow</div>
-          <div class="pt-price">€199 <span>/ month</span></div>
-          <ul class="pt-features">
-            <li>Up to <b>100</b> bank transactions/month</li>
-            <li class="pt-or">or</li>
-            <li>Up to <b>150</b> transactions/month</li>
-            <li>Employing up to <b>5</b> employees</li>
-            <li>Liaising and communicating with <b>VID</b></li>
-            <li><b>Up to 3</b> monthly VID reports</li>
-          </ul>
-          <a class="pt-cta cta-tier" href="#kontakti" data-tier="Grow">Get started</a>
-        </div>
+      <div class="price-hero">
+        <div class="label">Starting from</div>
+        <div class="amount">€59 <span>/ month *</span></div>
+        <p class="desc">The scope of service is tailored individually for each client, depending on the number of bank transactions and operations, the number of employees and any additional services. The first consultation is free of charge.</p>
       </div>
+      <div class="price-cta"><a class="btn cta-tier" href="#kontakti" data-tier="Mini">Get a price quote</a></div>
 
       <div class="price-notes">
         <p>* All prices shown are exclusive of value-added tax (VAT).</p>
@@ -849,7 +810,7 @@
       const messageField = document.getElementById('f-message');
       const tier = btn.getAttribute('data-tier');
       if(messageField && !messageField.value.trim()){
-        messageField.value = 'I would like to receive a personalized price quote for my company (interested in the ' + tier + ' package).';
+        messageField.value = 'I would like to receive a personalized price quote for my company (price starting from €59 per month).';
       }
     });
   });

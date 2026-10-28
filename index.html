@@ -649,51 +649,12 @@
     </div>
 
     <div class="price-card">
-      <p class="price-intro-note">Katra klienta pakalpojumu apmērs tiks piemeklēts individuāli. Orientējoši piedāvājam sekojošos sadarbības komplektus:</p>
-
-      <div class="price-cards">
-        <div class="price-tier">
-          <div class="pt-label">Mini</div>
-          <div class="pt-price">59 € <span>/ mēnesī</span></div>
-          <ul class="pt-features">
-            <li>Līdz <b>10</b> bankas darbībām mēnesī</li>
-            <li class="pt-or">vai</li>
-            <li>Līdz <b>20</b> darījumiem mēnesī</li>
-            <li>Nodarbināts <b>1</b> darbinieks</li>
-            <li>Sadarbība un komunikācija ar <b>VID</b></li>
-            <li><b>Līdz 3</b> ikmēneša atskaitēm VID</li>
-          </ul>
-          <a class="pt-cta cta-tier" href="#kontakti" data-tier="Mini">Pieteikties</a>
-        </div>
-
-        <div class="price-tier">
-          <div class="pt-label">Start</div>
-          <div class="pt-price">99 € <span>/ mēnesī</span></div>
-          <ul class="pt-features">
-            <li>Līdz <b>30</b> bankas darbībām mēnesī</li>
-            <li class="pt-or">vai</li>
-            <li>Līdz <b>40</b> darījumiem mēnesī</li>
-            <li>Nodarbināti līdz <b>3</b> darbinieki</li>
-            <li>Sadarbība un komunikācija ar <b>VID</b></li>
-            <li><b>Līdz 3</b> ikmēneša atskaitēm VID</li>
-          </ul>
-          <a class="pt-cta cta-tier" href="#kontakti" data-tier="Start">Pieteikties</a>
-        </div>
-
-        <div class="price-tier">
-          <div class="pt-label">Grow</div>
-          <div class="pt-price">199 € <span>/ mēnesī</span></div>
-          <ul class="pt-features">
-            <li>Līdz <b>100</b> bankas darbībām mēnesī</li>
-            <li class="pt-or">vai</li>
-            <li>Līdz <b>150</b> darījumiem mēnesī</li>
-            <li>Nodarbināti līdz <b>5</b> darbinieki</li>
-            <li>Sadarbība un komunikācija ar <b>VID</b></li>
-            <li><b>Līdz 3</b> ikmēneša atskaitēm VID</li>
-          </ul>
-          <a class="pt-cta cta-tier" href="#kontakti" data-tier="Grow">Pieteikties</a>
-        </div>
+      <div class="price-hero">
+        <div class="label">Sākot no</div>
+        <div class="amount">59 € <span>/ mēnesī *</span></div>
+        <p class="desc">Katra klienta pakalpojumu apmērs tiek piemeklēts individuāli — atkarībā no bankas darbību un darījumu skaita, darbinieku skaita un papildu pakalpojumiem. Pirmā konsultācija ir bez maksas.</p>
       </div>
+      <div class="price-cta"><a class="btn cta-tier" href="#kontakti" data-tier="Mini">Saņemt cenas piedāvājumu</a></div>
 
       <div class="price-notes">
         <p>* Visas norādītās cenas ir bez pievienotās vērtības nodokļa (PVN).</p>
@@ -852,7 +813,7 @@
       const messageField = document.getElementById('f-message');
       const tier = btn.getAttribute('data-tier');
       if(messageField && !messageField.value.trim()){
-        messageField.value = 'Vēlos saņemt personalizētu cenas piedāvājumu manam uzņēmumam (interesē ' + tier + ' komplekts).';
+        messageField.value = 'Vēlos saņemt personalizētu cenas piedāvājumu manam uzņēmumam (cena sākot no 59 € mēnesī).';
       }
     });
   });
