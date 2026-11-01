@@ -207,10 +207,18 @@
   @keyframes grow{ from{width:0;} to{width:64px;} }
 
   /* PROCESS STRIP */
-  .process{ background:var(--black-2); border-top:1px solid var(--hair-dark); border-bottom:1px solid var(--hair-dark); }
+  .process{ min-height:auto; padding:0; background:var(--black-2); border-top:1px solid var(--hair-dark); border-bottom:1px solid var(--hair-dark); }
   .process .wrap{
     display:grid; grid-template-columns:repeat(3, 1fr); gap:0;
   }
+  .process .wrap{ grid-template-columns:1.2fr 1fr; align-items:stretch; }
+  .process-items{ display:flex; flex-direction:column; justify-content:center; padding:20px 0; }
+  .process-items .process-item{ border-left:none; padding:34px 40px 34px 0; border-top:1px solid var(--hair-dark); }
+  .process-items .process-item:first-child{ border-top:none; }
+  .process-photo{ margin:0; line-height:0; padding:48px 0; display:flex; align-items:center; justify-content:flex-end; }
+  .process-photo{ flex-direction:column; align-items:flex-end; justify-content:center; }
+  .process-photo img{ width:100%; max-width:400px; height:auto; display:block; }
+  .process-photo figcaption{ max-width:400px; width:100%; margin-top:18px; line-height:1.55; font-family:'Lora',Georgia,serif; font-style:italic; font-size:17px; color:#8a6d3b; border-left:2px solid var(--gold); padding-left:14px; }
   .process-item{
     padding:52px 40px; border-left:1px solid var(--hair-dark);
   }
@@ -223,6 +231,11 @@
     color:var(--white); font-size:18px; font-weight:600; margin:10px 0 8px;
   }
   .process-item p{ color:#b8b5ab; font-size:15px; margin:0; line-height:1.65; }
+  .process{ background:#fff; border-top:1px solid var(--hair); border-bottom:1px solid var(--hair); }
+  .process .process-item{ border-color:var(--hair) !important; }
+  .process-item .num{ color:#B08D57; }
+  .process-item h3{ color:var(--black); }
+  .process-item p{ color:var(--ink-soft); }
 
   /* SECTIONS */
   section{
@@ -531,6 +544,9 @@
     .form-grid{ grid-template-columns:1fr; }
     .ledger-row{ grid-template-columns:1fr; gap:6px; }
     .process .wrap{ grid-template-columns:1fr; }
+    .process-photo{ padding:0 0 40px; align-items:center; }
+    .process-photo figcaption{ max-width:320px; }
+    .process-photo img{ max-width:320px; }
     .process-item{ border-left:none !important; border-top:1px solid var(--hair-dark); padding:36px 0 !important; }
     .process-item:first-child{ border-top:none; }
     section{ padding:80px 0; min-height:auto; display:block; }
@@ -573,6 +589,7 @@
 
 <section class="process" id="process">
   <div class="wrap">
+    <div class="process-items">
     <div class="process-item">
       <span class="num">01</span>
       <h3>Document handover</h3>
@@ -588,6 +605,8 @@
       <h3>Financial insight</h3>
       <p>An accountant with added value — I review your company's key KPIs whenever needed.</p>
     </div>
+    </div>
+    <figure class="process-photo"><img src="joseo-darbs-pilna.jpg" alt="Desk with a laptop, notepad and coffee" loading="lazy" width="900" height="1350"><figcaption>You enjoy your morning coffee, we take care of the numbers.</figcaption></figure>
   </div>
 </section>
 
