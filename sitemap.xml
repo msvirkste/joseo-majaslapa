@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://www.joseo.lv/</loc>
+    <lastmod>2026-11-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://www.joseo.lv/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.joseo.lv/index-en.html"/>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.joseo.lv/index-en.html</loc>
+    <lastmod>2026-11-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://www.joseo.lv/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.joseo.lv/index-en.html"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.joseo.lv/sia-dibinasana.html</loc>
+    <lastmod>2026-11-03</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.joseo.lv/gramatvedibas-sakartosana.html</loc>
+    <lastmod>2026-11-03</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.joseo.lv/padomi.html</loc>
+    <lastmod>2026-11-03</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.joseo.lv/privatuma-politika.html</loc>
+    <lastmod>2026-11-03</lastmod>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://www.joseo.lv/noteikumi.html</loc>
+    <lastmod>2026-11-03</lastmod>
+    <priority>0.2</priority>
+  </url>
+</urlset>
